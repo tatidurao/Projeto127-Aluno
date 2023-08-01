@@ -1,13 +1,15 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-from bs4 import BeautifulSoup 
+from bs4 import BeautifulSoup
 import time
 import pandas as pd
 
 START_URL = "https://en.wikipedia.org/wiki/List_of_brightest_stars_and_other_record_stars"
 
-browser = webdriver.Chrome("D:/Setup/chromedriver_win32/chromedriver.exe")
-browser.get(START_URL)
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+driver.get(START_URL)
 
 scarped_data = []
 
@@ -15,9 +17,9 @@ time.sleep(10)
 
 def scrape():
 
-    #soup = BeautifulSoup(browser.page_source, "html.parser")
-    #soup = BeautifulSoup(browser.page_source, )
-    #soup = BeautifulSoup(browser, "html.parser")
+    #soup = BeautifulSoup(driver.page_source, "html.parser")
+    #soup = BeautifulSoup(driver.page_source, )
+    #soup = BeautifulSoup(driver, "html.parser")
     
     #bright_star_table = soup.find("", attrs={"class", "wikitable"})
     #bright_star_table = soup.find("table", attrs={"class", "wikitable"})
